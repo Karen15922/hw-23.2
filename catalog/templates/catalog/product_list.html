@@ -10,7 +10,6 @@
 <div class="container overflow-hidden">
     <div class="row text-center gy-5">
         {% for object in object_list %}
-            {% if object.active_version %}
                 <div class="col-3">
                     <div class="card mb-4 box-shadow h-100">
                         <div class="card-header">
@@ -29,7 +28,6 @@
                         </div>
                     </div>
                 </div>
-            {% endif %}
         {% endfor %}
     </div>
 {% endblock %}
