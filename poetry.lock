@@ -35,9 +35,6 @@ six = ">=1.12.0"
 astroid = ["astroid (>=1,<2)", "astroid (>=2,<4)"]
 test = ["astroid (>=1,<2)", "astroid (>=2,<4)", "pytest"]
 
-[package.dependencies]
-colorama = {version = "*", markers = "platform_system == \"Windows\""}
-
 [[package]]
 name = "colorama"
 version = "0.4.6"
@@ -555,4 +552,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "98add47c817e5e1dd4a9aaf23e95fbd37faac5ce3f4836ff4f3113c3fc43a5b3"
+content-hash = "971294661ddb7cbdec5ac2da11ef5471bac984626d524daf8b8dc6f75f6be387"

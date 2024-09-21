@@ -26,6 +26,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # URL-маршрут для административной панели Django
     path('', include('catalog.urls', namespace='catalog')),  # URL-маршруты для приложения catalog
     path('blog/', include('blog.urls', namespace='blog')),  # URL-маршруты для приложения blog
+    path('users/', include('users.urls', namespace='users'))
 ]
 
 if settings.DEBUG:

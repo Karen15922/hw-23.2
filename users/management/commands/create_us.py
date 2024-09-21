@@ -1,5 +1,5 @@
 from django.core.management import BaseCommand
-from user.models import User
+from users.models import User
 
 # команда для создания суперпользователя
 class Command(BaseCommand):
