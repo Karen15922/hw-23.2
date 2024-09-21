@@ -23,24 +23,13 @@ class Category(models.Model):
 
 # модель продуктов
 class Product(models.Model):
-    product_name = models.CharField(
-        max_length=100, 
-        verbose_name='название продукта')
-    product_description = models.TextField(
-        )
-    category = models.ForeignKey(
-        Category, 
-        on_delete=models.CASCADE)
-    product_image = models.ImageField(
-        **NULLABLE)
-    price = models.DecimalField(
-        max_digits=6, 
-        decimal_places=2, 
-        **NULLABLE)
-    created_at = models.DateField(
-        default=datetime.now)
-    update_at = models.DateField(
-        default=datetime.now)
+    product_name = models.CharField(max_length=100, verbose_name='название продукта')
+    product_description = models.TextField()
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    product_image = models.ImageField(**NULLABLE)
+    price = models.DecimalField(max_digits=6, decimal_places=2, **NULLABLE)
+    created_at = models.DateField(default=datetime.now)
+    update_at = models.DateField(default=datetime.now)
 
 # возвращает строку сожержащую номер активной версии, если нет активной версии возвращает None
     @property
