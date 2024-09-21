@@ -32,8 +32,8 @@ ALLOWED_HOSTS = ['*']
 #настройки для отправки писем
 EMAIL_HOST = 'smtp.yandex.ru'
 EMAIL_PORT = 465
-EMAIL_HOST_USER = "boobtyanin473@gmail.com"
-EMAIL_HOST_PASSWORD = "6276703zzz"
+EMAIL_HOST_USER = "karakeyan.karen@yandex.ru"
+EMAIL_HOST_PASSWORD = "6276703zx"
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 SERVER_EMAIL = EMAIL_HOST_USER
