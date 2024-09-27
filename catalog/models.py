@@ -1,5 +1,6 @@
 from django.db import models
 from datetime import datetime
+from users.models import User
 
 # константа для полей с возможными нулевыми значениями
 NULLABLE = {'blank': True, 'null': True}
@@ -30,6 +31,7 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2, **NULLABLE)
     created_at = models.DateField(default=datetime.now)
     update_at = models.DateField(default=datetime.now)
+    owner = models.ForeignKey(User,on_delete=models.SET_NULL,verbose_name='product_creator',**NULLABLE)
 
 # возвращает строку сожержащую номер активной версии, если нет активной версии возвращает None
     @property
