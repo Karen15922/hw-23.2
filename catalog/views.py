@@ -93,6 +93,7 @@ class ProductDetailView(DetailView):
 class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:product_list')
+    permission_required = 'catalog.delete_product'
 
 # контроллер для страницы контактов
 class ContactsPageView(TemplateView):
