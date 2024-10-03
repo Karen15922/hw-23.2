@@ -5,14 +5,30 @@ from django.shortcuts import render, get_object_or_404
 from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView, TemplateView
 from catalog.models import Product, Release
 from pytils.translit import slugify
-from catalog.forms import ProductForm, ReleaseForm
+from catalog.forms import ProductForm, ReleaseForm, ModeratorProductForm, ModeratorReleaseForm
 from django.forms import inlineformset_factory
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.exceptions import PermissionDenied
+from django.core.exceptions import ImproperlyConfigured
+
 
 # контроллер для страницы создания нового продукта
-class ProductCreateView(CreateView):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
+    
+    
+    def get_context_data(self, **kwargs):
+        context_data = super().get_context_data(**kwargs)
+        ReleaseFormset = inlineformset_factory(Product, Release, ReleaseForm, extra=1)
+        if self.request.method == 'POST':
+            context_data['formset'] = ReleaseFormset(self.request.POST, instance=self.object)
+        else:
+            context_data['formset'] = ReleaseFormset(instance=self.object)
+        return context_data 
+
+
 
     def form_valid(self, form):
         context_data = self.get_context_data()
@@ -28,18 +44,8 @@ class ProductCreateView(CreateView):
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
     
-
-    def get_context_data(self, **kwargs):
-        context_data = super().get_context_data(**kwargs)
-        ReleaseFormset = inlineformset_factory(Product, Release, ReleaseForm, extra=1)
-        if self.request.method == 'POST':
-            context_data['formset'] = ReleaseFormset(self.request.POST, instance=self.object)
-        else:
-            context_data['formset'] = ReleaseFormset(instance=self.object)
-        return context_data 
-
-# контроллер для страницы редактирования продукта
-class ProductUpdateView(UpdateView):
+   # контроллер для страницы редактирования продукта
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:product_list')
@@ -66,6 +72,14 @@ class ProductUpdateView(UpdateView):
             return super().form_valid(form)
         else:
             return self.render_to_response(self.get_context_data(form=form, formset=formset))
+        
+    def get_form_class(self):
+        user = self.request.user
+        if self.request.user.is_superuser:
+            return ProductForm
+        if user.has.perm('catalog.change_product') or self.object.owner == user:
+            return ModeratorProductForm
+        raise PermissionDenied
 
 # контроллер для страницы отображения списка продуктов
 class ProductListView(ListView):
@@ -76,7 +90,7 @@ class ProductDetailView(DetailView):
     model = Product
 
 # контроллер для страницы подтверждения удаления продукта
-class ProductDeleteView(DeleteView):
+class ProductDeleteView(PermissionRequiredMixin, DeleteView):
     model = Product
     success_url = reverse_lazy('catalog:product_list')
 
