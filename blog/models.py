@@ -18,3 +18,8 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'пост'
         verbose_name_plural = 'посты'
+        permissions = [
+            ('can_edit_title', 'can edit title'),
+            ('can_edit_content', 'can edit content'),
+            ('can_edit_is_published', 'can edit is_published')
+        ]
