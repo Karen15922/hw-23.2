@@ -53,7 +53,6 @@ class Product(models.Model):
             ('can_edit_category', 'can edit category')
         ]
 
-
 class Release(models.Model):
     """
     модель версий продуктов
