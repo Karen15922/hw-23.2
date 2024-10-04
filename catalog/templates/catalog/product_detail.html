@@ -25,15 +25,13 @@
 		            <div class="btn-group">
                         {% if user.is_authenticated %}
                             {% if request.user == object.owner or perms.catalog.change_product %}
-                                {% if object.active_version %}
-		                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'catalog:edit' object.pk %}">edit</a>
-                                {% endif %}
+		                            <a type="button" class="btn btn-sm btn-outline-success" href="{% url 'catalog:edit' object.pk %}">редактировать</a>
                             {% endif %}
                             {% if perms.product.can_delete_product %}
-                                <a type="button" class="btn btn-sm btn-outline-secondary text-danger" href="{% url 'catalog:delete' object.pk %}">delete</a>
+                                <a type="button" class="btn btn-sm btn-outline-secondary text-danger" href="{% url 'catalog:delete' object.pk %}">удалить</a>
                             {% endif %}
                         {% endif %}
-                        <a role="button" href="{% url 'catalog:product_list' %}" class="btn btn-sm btn-outline-secondary">Назад</a>
+                        <a role="button" href="{% url 'catalog:product_list' %}" class="btn btn-sm btn-outline-info">Назад</a>
                     </div>
                 </div>
             </div>
