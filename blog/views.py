@@ -7,6 +7,9 @@ from blog.models import Post
 from pytils.translit import slugify 
 
 def view_all(request):
+    """
+    просмотр всех постов
+    """
     posts = Post.objects.all()
     context = {
             'object_list': posts,
@@ -16,6 +19,9 @@ def view_all(request):
     return render(request, 'blog/view_all.html', context)
 
 class PostCreateView(CreateView):
+    """
+    контроллер создания поста
+    """
     model = Post
     fields = ('title', 'content', 'image')
     success_url = reverse_lazy('blog:list')
@@ -29,6 +35,9 @@ class PostCreateView(CreateView):
         return super().form_valid(form)
 
 class PostUpdateView(UpdateView):
+    """
+    контроллер редактирования поста
+    """
     model = Post
     fields = ('title', 'content', 'image')
     success_url = reverse_lazy('blog:list')
@@ -45,15 +54,24 @@ class PostUpdateView(UpdateView):
         return(reverse('blog:view', args=[self.kwargs.get('pk')]))
 
 class PostListView(ListView):
+    """
+    контроллер списка постов
+    """
     model = Post
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
-        queryset = queryset.filter(is_published=True)
-
-        return queryset
+        if self.request.user.is_superuser:
+            return queryset
+        
+        return queryset.filter(is_published=True)
+    
+    
 
 class PostDetailView(DetailView):
+    """
+    контроллер детального просмотра поста
+    """
     model = Post
 
     def get_object(self, queryset=None):
@@ -64,12 +82,19 @@ class PostDetailView(DetailView):
         return self.object
 
 class PostDeleteView(DeleteView):
+    """
+    контроллер удаления поста
+    """
     model = Post
     success_url = reverse_lazy('blog:list')
 
 
 
 def published_toggle(request, pk):
+    """
+    контроллер публикации поста
+    """
+    
     post = get_object_or_404(Post, pk=pk) 
     if post.is_published:
         post.is_published = False
