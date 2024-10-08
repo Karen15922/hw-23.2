@@ -24,7 +24,7 @@
                     <p>creator: {{ object.owner }}</p>
 		            <div class="btn-group">
                         {% if user.is_authenticated %}
-                            {% if request.user == object.owner or perms.catalog.change_product %}
+                            {% if request.user == object.owner or perms.catalog.can_edit_product_description and perms.catalog.can_edit_category and perms.catalog.can_edit_is_active %}
 		                            <a type="button" class="btn btn-sm btn-outline-success" href="{% url 'catalog:edit' object.pk %}">редактировать</a>
                             {% endif %}
                             {% if perms.product.can_delete_product %}

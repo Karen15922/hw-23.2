@@ -88,6 +88,5 @@ class Release(models.Model):
         verbose_name_plural = 'версии'
         ordering = ('version_name',)
         permissions = [
-            ('can_edit_is_active', 'can edit is active'),
-            ('can_edit_version', 'can edit version'),
+            ('can_edit_is_active', 'can edit is active')
         ]

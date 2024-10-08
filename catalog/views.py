@@ -77,9 +77,12 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
         user = self.request.user
         if self.request.user.is_superuser:
             return ProductForm
-        if user.has_perm('catalog.change_product') or self.object.owner == user:
+        if user.has_perms(['catalog.can_edit_product_description', 'catalog.can_edit_category', 'catalog.can_edit_is_active']):
             return ModeratorProductForm
+        elif self.object.owner == user:
+            return ProductForm
         raise PermissionDenied
+        
 
 # контроллер для страницы отображения списка продуктов
 class ProductListView(ListView):
@@ -105,3 +108,4 @@ class ContactsPageView(TemplateView):
         message = request.POST.get('message')
         print(f'{name} ({phone}) "{message}"')
         return render(request, 'catalog/contacts.html')
+
