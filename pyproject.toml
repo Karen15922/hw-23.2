@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "hw-23.2"
+name = "hw-23.1"
 version = "0.1.0"
 description = ""
 authors = ["Карен <karen.karakeyan@yandex.ru>"]
@@ -15,6 +15,7 @@ psycopg2-binary = "^2.9.9"
 slugify = "^0.0.1"
 pytils = "^0.4.1"
 redis = "^5.1.1"
+python-dotenv = "^1.0.1"
 
 
 
