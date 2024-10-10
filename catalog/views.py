@@ -10,6 +10,7 @@ from django.forms import inlineformset_factory
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.core.exceptions import ImproperlyConfigured
+from catalog.services import get_products_from_cache
 
 
 # контроллер для страницы создания нового продукта
@@ -87,6 +88,9 @@ class ProductUpdateView(LoginRequiredMixin, UpdateView):
 # контроллер для страницы отображения списка продуктов
 class ProductListView(ListView):
     model = Product
+    
+    def get_queryset(self):
+        return get_products_from_cache()
 
 # контроллер для страницы детального отображения продукта
 class ProductDetailView(DetailView):
