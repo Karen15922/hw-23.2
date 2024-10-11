@@ -219,77 +219,104 @@
     "model": "auth.permission",
     "pk": 25,
     "fields": {
-      "name": "Can add версия",
+      "name": "Can add продукт",
       "content_type": 7,
-      "codename": "add_release"
+      "codename": "add_product"
     }
   },
   {
     "model": "auth.permission",
     "pk": 26,
     "fields": {
-      "name": "Can change версия",
+      "name": "Can change продукт",
       "content_type": 7,
-      "codename": "change_release"
+      "codename": "change_product"
     }
   },
   {
     "model": "auth.permission",
     "pk": 27,
     "fields": {
-      "name": "Can delete версия",
+      "name": "Can delete продукт",
       "content_type": 7,
-      "codename": "delete_release"
+      "codename": "delete_product"
     }
   },
   {
     "model": "auth.permission",
     "pk": 28,
     "fields": {
-      "name": "Can view версия",
+      "name": "Can view продукт",
       "content_type": 7,
-      "codename": "view_release"
+      "codename": "view_product"
     }
   },
   {
     "model": "auth.permission",
     "pk": 29,
     "fields": {
-      "name": "Can add продукт",
-      "content_type": 8,
-      "codename": "add_product"
+      "name": "can edit product description",
+      "content_type": 7,
+      "codename": "can_edit_product_description"
     }
   },
   {
     "model": "auth.permission",
     "pk": 30,
     "fields": {
-      "name": "Can change продукт",
-      "content_type": 8,
-      "codename": "change_product"
+      "name": "can edit category",
+      "content_type": 7,
+      "codename": "can_edit_category"
     }
   },
   {
     "model": "auth.permission",
     "pk": 31,
     "fields": {
-      "name": "Can delete продукт",
+      "name": "Can add версия",
       "content_type": 8,
-      "codename": "delete_product"
+      "codename": "add_release"
     }
   },
   {
     "model": "auth.permission",
     "pk": 32,
     "fields": {
-      "name": "Can view продукт",
+      "name": "Can change версия",
       "content_type": 8,
-      "codename": "view_product"
+      "codename": "change_release"
     }
   },
   {
     "model": "auth.permission",
     "pk": 33,
+    "fields": {
+      "name": "Can delete версия",
+      "content_type": 8,
+      "codename": "delete_release"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 34,
+    "fields": {
+      "name": "Can view версия",
+      "content_type": 8,
+      "codename": "view_release"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 35,
+    "fields": {
+      "name": "can edit is active",
+      "content_type": 8,
+      "codename": "can_edit_is_active"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 36,
     "fields": {
       "name": "Can add пост",
       "content_type": 9,
@@ -298,7 +325,7 @@
   },
   {
     "model": "auth.permission",
-    "pk": 34,
+    "pk": 37,
     "fields": {
       "name": "Can change пост",
       "content_type": 9,
@@ -307,7 +334,7 @@
   },
   {
     "model": "auth.permission",
-    "pk": 35,
+    "pk": 38,
     "fields": {
       "name": "Can delete пост",
       "content_type": 9,
@@ -316,7 +343,7 @@
   },
   {
     "model": "auth.permission",
-    "pk": 36,
+    "pk": 39,
     "fields": {
       "name": "Can view пост",
       "content_type": 9,
@@ -325,79 +352,7 @@
   },
   {
     "model": "auth.permission",
-    "pk": 37,
-    "fields": {
-      "name": "Can add Пользователь",
-      "content_type": 10,
-      "codename": "add_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 38,
-    "fields": {
-      "name": "Can change Пользователь",
-      "content_type": 10,
-      "codename": "change_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 39,
-    "fields": {
-      "name": "Can delete Пользователь",
-      "content_type": 10,
-      "codename": "delete_user"
-    }
-  },
-  {
-    "model": "auth.permission",
     "pk": 40,
-    "fields": {
-      "name": "Can view Пользователь",
-      "content_type": 10,
-      "codename": "view_user"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 41,
-    "fields": {
-      "name": "can cancel publication",
-      "content_type": 7,
-      "codename": "can_edit_is_active"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 42,
-    "fields": {
-      "name": "can edit version",
-      "content_type": 7,
-      "codename": "can_edit_version"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 43,
-    "fields": {
-      "name": "can edit product description",
-      "content_type": 8,
-      "codename": "can_edit_product_description"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 44,
-    "fields": {
-      "name": "can edit category",
-      "content_type": 8,
-      "codename": "can_edit_category"
-    }
-  },
-  {
-    "model": "auth.permission",
-    "pk": 45,
     "fields": {
       "name": "can edit title",
       "content_type": 9,
@@ -406,7 +361,7 @@
   },
   {
     "model": "auth.permission",
-    "pk": 46,
+    "pk": 41,
     "fields": {
       "name": "can edit content",
       "content_type": 9,
@@ -415,7 +370,7 @@
   },
   {
     "model": "auth.permission",
-    "pk": 47,
+    "pk": 42,
     "fields": {
       "name": "can edit is_published",
       "content_type": 9,
@@ -423,13 +378,39 @@
     }
   },
   {
-    "model": "auth.group",
-    "pk": 1,
-    "fields": { "name": "manager", "permissions": [44, 43] }
+    "model": "auth.permission",
+    "pk": 43,
+    "fields": {
+      "name": "Can add Пользователь",
+      "content_type": 10,
+      "codename": "add_user"
+    }
   },
   {
-    "model": "auth.group",
-    "pk": 2,
-    "fields": { "name": "admin", "permissions": [] }
+    "model": "auth.permission",
+    "pk": 44,
+    "fields": {
+      "name": "Can change Пользователь",
+      "content_type": 10,
+      "codename": "change_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 45,
+    "fields": {
+      "name": "Can delete Пользователь",
+      "content_type": 10,
+      "codename": "delete_user"
+    }
+  },
+  {
+    "model": "auth.permission",
+    "pk": 46,
+    "fields": {
+      "name": "Can view Пользователь",
+      "content_type": 10,
+      "codename": "view_user"
+    }
   }
 ]
