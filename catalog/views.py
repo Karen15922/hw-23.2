@@ -30,7 +30,6 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         return context_data 
 
 
-
     def form_valid(self, form):
         context_data = self.get_context_data()
         formset = context_data['formset']

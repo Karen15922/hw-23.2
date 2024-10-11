@@ -1,6 +1,5 @@
 from django.forms import ModelForm, BooleanField
 from django.core.exceptions import ValidationError
-
 from catalog.models import Product, Release
 
 
@@ -28,7 +27,7 @@ class ProductForm(StyleFormMixin, ModelForm):
 
     def clean_product_name(self):
         """
-        валидация поля product_name
+        валидация поля product_name.
         """
         prohibited = ['казино', 'криптовалюта', 'биржа',
                       'дешево', 'бесплатно', 'обман', 'полиция', 'радар']
